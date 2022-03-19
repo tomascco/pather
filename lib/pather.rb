@@ -11,13 +11,16 @@ module Pather
 
   AVAILABLE_SERVERS = {puma: Rack::Handler::Puma, webrick: Rack::Handler::WEBrick}.freeze
 
-  def self.draw_routes_and_start_app(with: :puma, drawer: RouteDrawer.new, &block)
-    raise LocalJumpError if block.nil?
+  def self.draw_routes_and_build_app(with: :puma, drawer: RouteDrawer.new, autoexec: true, &block)
+    raise LocalJumpError, "No routes' block passed" if block.nil?
 
     drawer.instance_eval(&block)
 
+    app = Pather::Router.with(drawer.to_routes)
+    return app unless autoexec
+
     AVAILABLE_SERVERS
       .fetch(with)
-      .run(Pather::Router.with(drawer.to_routes))
+      .run(app)
   end
 end
