@@ -3,19 +3,19 @@
 module Pather
   class RouteDrawer
     def initialize
-      @routes = []
+      @routes = {"GET" => [], "POST" => []}.freeze
     end
 
-    def get(path, handler: nil)
-      routes << {verb: "GET", path: path, handler: handler}
+    def get(path, handler:)
+      routes["GET"] << {path: path, handler: handler}
     end
 
-    def post(path)
-      routes << {verb: "POST", path: path}
+    def post(path, handler:)
+      routes["POST"] << {path: path, handler: handler}
     end
 
     def to_routes
-      routes
+      routes.transform_values(&:freeze)
     end
 
     private
