@@ -13,8 +13,8 @@ module Pather
     def call(env)
       method, path = env.values_at("REQUEST_METHOD", "REQUEST_PATH")
 
-      case routes
-      in [*, {verb: ^method, path: ^path, handler: handler}, *]
+      case routes[method]
+      in [*, {path: ^path, handler: handler}, *]
         handler.call(env)
       else
         [404, {}, ["Rota não encontrada"]]
