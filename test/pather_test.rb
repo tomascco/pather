@@ -30,17 +30,17 @@ class PatherTest < Minitest::Test
 
   def test_draw_routes_and_build_app_exception_drawer_handling
     # Arrange
-    drawer = FakeDrawer.new
+    fake_drawer = FakeDrawer.new
     block = proc {}
 
     # Act
-    Pather.draw_routes_and_build_app(drawer: drawer, autoexec: false, &block)
+    Pather.draw_routes_and_build_app(drawer: fake_drawer, autoexec: false, &block)
 
     # Assert
-    assert_predicate(drawer, :instance_eval_called?)
-    assert_equal(block, drawer.instance_eval_block)
+    assert_predicate(fake_drawer, :instance_eval_called?)
+    assert_equal(block, fake_drawer.instance_eval_block)
 
-    assert_predicate(drawer, :to_routes_called?)
+    assert_predicate(fake_drawer, :to_routes_called?)
   end
 
   def test_draw_routes_and_build_app_exception
