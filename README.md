@@ -1,3 +1,6 @@
+<a href="https://codeclimate.com/github/tomascco/pather/test_coverage"><img src="https://api.codeclimate.com/v1/badges/76822246cca676cba6dd/test_coverage" /></a>
+<a href="https://codeclimate.com/github/tomascco/pather/maintainability"><img src="https://api.codeclimate.com/v1/badges/76822246cca676cba6dd/maintainability" /></a>
+
 # Pather
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pather`. To experiment with that code, run `bin/console` for an interactive prompt.
