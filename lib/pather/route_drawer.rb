@@ -15,7 +15,11 @@ module Pather
     end
 
     def to_routes
-      routes.transform_values(&:freeze)
+      routes.each_value do |verb_routes|
+        verb_routes.freeze
+
+        verb_routes.each(&:freeze)
+      end
     end
 
     private
