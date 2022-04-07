@@ -17,7 +17,7 @@ module Pather
       in [*, {path: ^path, handler: handler}, *]
         handler.call(env)
       else
-        [404, {}, ["Rota não encontrada"]]
+        [404, {}, ["Route not found"]]
       end
     end
 

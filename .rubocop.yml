@@ -8,16 +8,15 @@ AllCops:
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
-
 Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
-
 Style/ClassAndModuleChildren:
   Enabled: false
-
 Style/Documentation:
   Enabled: false
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
 
 Layout/LineLength:
   Max: 100
@@ -34,3 +33,7 @@ Layout/ArrayAlignment:
 
 Minitest/MultipleAssertions:
   Max: 5
+
+Metrics/MethodLength:
+  Exclude:
+    - test/**/*
